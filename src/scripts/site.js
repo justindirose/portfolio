@@ -3,17 +3,36 @@ const motionOn = () => root.dataset.motion === "on";
 if (matchMedia("(prefers-reduced-motion: reduce)").matches) root.dataset.motion = "off";
 
 const toggle = document.getElementById("mode-toggle");
-const setToggle = () => {
+const modePicks = document.querySelectorAll("[data-mode-pick]");
+const themeMeta = document.querySelector('meta[name="theme-color"]');
+const syncMode = () => {
   const dark = root.dataset.mode === "dark";
   toggle.textContent = dark ? "Light" : "Dark";
   toggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+  themeMeta.content = dark ? "#121516" : "#eceff0";
+  modePicks.forEach(b => b.setAttribute("aria-pressed", b.dataset.modePick === root.dataset.mode));
 };
-setToggle();
-toggle.addEventListener("click", () => {
-  root.dataset.mode = root.dataset.mode === "dark" ? "light" : "dark";
-  localStorage.setItem("jd-mode", root.dataset.mode);
-  setToggle();
-});
+const setMode = m => { root.dataset.mode = m; localStorage.setItem("jd-mode", m); syncMode(); };
+syncMode();
+toggle.addEventListener("click", () => setMode(root.dataset.mode === "dark" ? "light" : "dark"));
+modePicks.forEach(b => b.addEventListener("click", () => setMode(b.dataset.modePick)));
+
+// Mobile menu
+const menu = document.getElementById("site-menu");
+const menuBtn = document.getElementById("menu-btn");
+const mainEl = document.querySelector("main");
+const setMenu = open => {
+  menu.classList.toggle("open", open);
+  menu.inert = !open;
+  mainEl.inert = open;
+  root.classList.toggle("menu-open", open);
+  menuBtn.setAttribute("aria-expanded", open);
+  menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+};
+menuBtn.addEventListener("click", () => setMenu(!menu.classList.contains("open")));
+menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+addEventListener("keydown", e => { if (e.key === "Escape" && menu.classList.contains("open")) { setMenu(false); menuBtn.focus(); } });
+matchMedia("(min-width: 901px)").addEventListener("change", e => { if (e.matches) setMenu(false); });
 
 document.querySelectorAll(".track-inner").forEach(t => {
   const html = t.dataset.items.split("|").map(s => `<span>${s}</span><span class="dot">✺</span>`).join("");

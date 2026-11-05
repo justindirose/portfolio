@@ -22,7 +22,7 @@ const url = 'https://justindirose.com/';
 <html lang="en" data-theme="reactor" data-mode="dark" data-motion="on">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={url} />
@@ -37,7 +37,7 @@ const url = 'https://justindirose.com/';
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <script is:inline>
-      try { var m = localStorage.getItem('jd-mode'); if (m === 'light' || m === 'dark') document.documentElement.dataset.mode = m; } catch (e) {}
+      try { var m = localStorage.getItem('jd-mode'); if (m === 'light' || m === 'dark') { document.documentElement.dataset.mode = m; if (m === 'light') document.querySelector('meta[name=theme-color]').content = '#eceff0'; } } catch (e) {}
     </script>
   </head>
   <body>

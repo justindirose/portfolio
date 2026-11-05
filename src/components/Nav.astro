@@ -11,6 +11,22 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button id="mode-toggle" class="mode-toggle" type="button">Light</button>
+    <button id="menu-btn" class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu"><span></span><span></span><span></span></button>
     </div>
   </div>
 </nav>
+<div id="site-menu" class="menu" inert>
+  <ul class="menu-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#career">Career</a></li>
+    <li><a href="#ai">On AI</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#after-hours">After hours</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="menu-theme" role="group" aria-label="Theme">
+    <span class="menu-theme-lbl">Theme</span>
+    <button type="button" data-mode-pick="dark">Dark</button>
+    <button type="button" data-mode-pick="light">Light</button>
+  </div>
+</div>
