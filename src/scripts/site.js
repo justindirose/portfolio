@@ -20,18 +20,19 @@ modePicks.forEach(b => b.addEventListener("click", () => setMode(b.dataset.modeP
 // Mobile menu
 const menu = document.getElementById("site-menu");
 const menuBtn = document.getElementById("menu-btn");
-const mainEl = document.querySelector("main");
+const menuClose = document.getElementById("menu-close");
+const behindMenu = [document.querySelector("main"), document.querySelector(".nav")];
 const setMenu = open => {
   menu.classList.toggle("open", open);
   menu.inert = !open;
-  mainEl.inert = open;
+  behindMenu.forEach(el => { el.inert = open; });
   root.classList.toggle("menu-open", open);
   menuBtn.setAttribute("aria-expanded", open);
-  menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
 };
-menuBtn.addEventListener("click", () => setMenu(!menu.classList.contains("open")));
+menuBtn.addEventListener("click", () => { setMenu(true); menuClose.focus({ preventScroll: true }); });
+menuClose.addEventListener("click", () => { setMenu(false); menuBtn.focus({ preventScroll: true }); });
 menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMenu(false)));
-addEventListener("keydown", e => { if (e.key === "Escape" && menu.classList.contains("open")) { setMenu(false); menuBtn.focus(); } });
+addEventListener("keydown", e => { if (e.key === "Escape" && menu.classList.contains("open")) { setMenu(false); menuBtn.focus({ preventScroll: true }); } });
 matchMedia("(min-width: 901px)").addEventListener("change", e => { if (e.matches) setMenu(false); });
 
 document.querySelectorAll(".track-inner").forEach(t => {
