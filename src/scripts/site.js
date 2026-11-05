@@ -35,9 +35,20 @@ menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMen
 addEventListener("keydown", e => { if (e.key === "Escape" && menu.classList.contains("open")) { setMenu(false); menuBtn.focus({ preventScroll: true }); } });
 matchMedia("(min-width: 901px)").addEventListener("change", e => { if (e.matches) setMenu(false); });
 
-document.querySelectorAll(".track-inner").forEach(t => {
-  const html = t.dataset.items.split("|").map(s => `<span>${s}</span><span class="dot">✺</span>`).join("");
-  t.innerHTML = html + html + html + html;
+// Ticker: build only as many copies as the screen needs and set the duration from
+// a fixed speed. A shorter strip is lighter for phones to animate.
+document.querySelectorAll(".track-inner").forEach((t, row) => {
+  const speed = row === 0 ? 64 : 40; // pixels per second
+  const once = t.dataset.items.split("|").map(s => `<span>${s}</span><span class="dot">✺</span>`).join("");
+  const layout = () => {
+    t.innerHTML = once + once;
+    if (t.scrollWidth / 2 < innerWidth) t.innerHTML = once.repeat(4);
+    t.style.animationDuration = `${t.scrollWidth / 2 / speed}s`;
+  };
+  layout();
+  document.fonts.ready.then(layout);
+  let width = innerWidth;
+  addEventListener("resize", () => { if (innerWidth !== width) { width = innerWidth; layout(); } });
 });
 
 setTimeout(() => document.getElementById("hero-title").classList.add("in"), motionOn() ? 450 : 0);
