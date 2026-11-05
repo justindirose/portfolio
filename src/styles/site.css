@@ -486,4 +486,5 @@ footer { display: flex; justify-content: space-between; margin-top: 110px; paddi
   html.menu-open main, html.menu-open main * { visibility: hidden !important; transition: visibility 0s linear 220ms; }
 
   .contact .btn.email { justify-content: center; width: 100%; min-height: 64px; font-size: 18px; }
+  .socials { justify-content: center; width: 100%; }
 }
