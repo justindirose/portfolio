@@ -1,0 +1,55 @@
+---
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Ticker from '../components/Ticker.astro';
+import Skills from '../components/Skills.astro';
+import Career from '../components/Career.astro';
+import OnAI from '../components/OnAI.astro';
+import Work from '../components/Work.astro';
+import AfterHours from '../components/AfterHours.astro';
+import Contact from '../components/Contact.astro';
+import '@fontsource-variable/host-grotesk';
+import '@fontsource-variable/instrument-sans';
+import '@fontsource-variable/source-serif-4/opsz.css';
+import '@fontsource-variable/source-serif-4/opsz-italic.css';
+import '../styles/site.css';
+
+const title = 'Justin DiRose · Customer to launch';
+const description = 'I get the people using it and the people building it working together, and I keep it moving until it ships.';
+const url = 'https://justindirose.com/';
+---
+<!doctype html>
+<html lang="en" data-theme="reactor" data-mode="dark" data-motion="on">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={url} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#121516" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content="https://justindirose.com/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script is:inline>
+      try { var m = localStorage.getItem('jd-mode'); if (m === 'light' || m === 'dark') document.documentElement.dataset.mode = m; } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <Nav />
+    <Hero />
+    <Ticker />
+    <Skills />
+    <Career />
+    <OnAI />
+    <Work />
+    <AfterHours />
+    <Contact />
+    <script src="../scripts/site.js"></script>
+  </body>
+</html>
