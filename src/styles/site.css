@@ -442,6 +442,7 @@ footer { display: flex; justify-content: space-between; margin-top: 110px; paddi
 /* Contact: email on its own line, socials below */
 .contact .ctas { flex-direction: column; align-items: flex-start; }
 .socials { display: flex; flex-wrap: wrap; gap: 12px; }
+.contact .btn.email { justify-content: center; min-width: 240px; }
 
 /* Mobile menu */
 .menu-btn, .menu { display: none; }
