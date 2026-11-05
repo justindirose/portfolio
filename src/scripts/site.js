@@ -29,10 +29,12 @@ const setMenu = open => {
   root.classList.toggle("menu-open", open);
   menuBtn.setAttribute("aria-expanded", open);
 };
-menuBtn.addEventListener("click", () => { setMenu(true); menuClose.focus({ preventScroll: true }); });
-menuClose.addEventListener("click", () => { setMenu(false); menuBtn.focus({ preventScroll: true }); });
+let menuScrollY = 0;
+const closeInPlace = () => { setMenu(false); scrollTo({ top: menuScrollY, behavior: "instant" }); menuBtn.focus({ preventScroll: true }); };
+menuBtn.addEventListener("click", () => { menuScrollY = scrollY; setMenu(true); menuClose.focus({ preventScroll: true }); });
+menuClose.addEventListener("click", closeInPlace);
 menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMenu(false)));
-addEventListener("keydown", e => { if (e.key === "Escape" && menu.classList.contains("open")) { setMenu(false); menuBtn.focus({ preventScroll: true }); } });
+addEventListener("keydown", e => { if (e.key === "Escape" && menu.classList.contains("open")) closeInPlace(); });
 matchMedia("(min-width: 901px)").addEventListener("change", e => { if (e.matches) setMenu(false); });
 
 // Ticker: build only as many copies as the screen needs and set the duration from
