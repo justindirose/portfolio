@@ -480,6 +480,9 @@ footer { display: flex; justify-content: space-between; margin-top: 110px; paddi
   .menu-theme button { min-width: 72px; min-height: 44px; padding: 4px 14px; border: 2px solid var(--ink); border-radius: var(--btn-r); background: none; color: inherit; font: 700 14px var(--font-ui); cursor: pointer; }
   .menu-theme button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
   html.menu-open { overflow: hidden; }
+  /* Solid behind Safari's translucent URL bar: extend the panel past the screen and hide the page */
+  .menu::after { position: fixed; z-index: -2; top: 0; right: 0; left: 0; height: 150lvh; background: var(--paper); content: ""; }
+  html.menu-open main, html.menu-open main * { visibility: hidden !important; transition: visibility 0s linear 220ms; }
 
   .contact .btn.email { justify-content: center; width: 100%; min-height: 64px; font-size: 18px; }
 }
