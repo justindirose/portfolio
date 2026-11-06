@@ -530,3 +530,25 @@ footer { display: flex; justify-content: space-between; margin-top: 110px; paddi
 :root .work { background-image: radial-gradient(var(--tex) 1px, transparent 1.3px); background-size: 8px 8px; }
 /* After hours: sound rings from the corner */
 :root .after { background-image: repeating-radial-gradient(circle at 100% 0, var(--tex) 0 1px, transparent 1px 28px); }
+
+/* Second polish pass: spacing on the 4px grid, three weights, no layout animation */
+:root .sec-lede { margin-top: 24px; }
+:root .era-year { margin-top: 8px; }
+:root .tl-carry .lbl { margin-bottom: 12px; }
+:root .principle h3 { margin-bottom: 8px; }
+:root .era p { margin-bottom: 20px; }
+:root .work-row p { margin-bottom: 16px; }
+:root footer { margin-top: 112px; padding-top: 24px; }
+:root .btn { gap: 8px; }
+@media (min-width: 901px) { :root .caps { gap: 16px; } }
+:root .wordmark, :root .hero-sub { letter-spacing: 0; }
+:root .hero-sub { font-size: clamp(20px, 2vw, 28px); }
+:root .cap h3 { font-size: 36px; }
+:root .nav-links a, :root .kicker, :root .cap .combo, :root .era-num, :root .era-span, :root .accent, :root .lane-seg, :root .tl-carry .lbl, :root .outcome small, :root .hero-meta, :root .hero-meta b, :root .moment figcaption, :root footer, :root .ah-list a.listen, :root .mode-toggle, :root .menu-theme-lbl { font-weight: 600; }
+:root .principle, :root .work-row { transition: background 240ms ease, color 240ms ease; }
+:root .cap:hover, :root[data-mode="dark"] .cap:hover, :root .ah-list a.listen:hover { transform: none; }
+@media (max-width: 900px) {
+  :root .menu-links a { padding: 2px 12px 4px 0; transition: opacity 320ms ease, transform 420ms var(--ease), background 160ms ease, color 160ms ease; }
+  :root .menu.open .menu-links a:hover, :root .menu.open .menu-links a:active, :root .menu.open .menu-links a:focus-visible { padding-left: 12px; }
+  :root .menu-theme button { padding: 4px 16px; }
+}
