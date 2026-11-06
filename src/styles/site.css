@@ -474,6 +474,8 @@ footer { display: flex; justify-content: space-between; margin-top: 110px; paddi
 :root .ah-list h3, :root .stack h4 { font-size: 18px; }
 :root .combo b { font-weight: inherit; }
 
+:root .cap h3 { margin-top: 0; }
+
 /* Tech on work rows: plain text */
 :root .tags { display: block; }
 :root .tags li { display: inline; padding: 0; border: 0; border-radius: 0; font-size: 14px; letter-spacing: 0; opacity: .7; }
