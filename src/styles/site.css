@@ -512,3 +512,21 @@ footer { display: flex; justify-content: space-between; margin-top: 110px; paddi
 :root .contact .ctas { align-items: center; }
 .socials { justify-content: center; }
 .contact footer { justify-content: center; }
+
+/* Section textures: printed and workshop patterns, each with a reason to be there */
+:root { --tex: color-mix(in srgb, var(--ink) 7%, transparent); --tex-strong: color-mix(in srgb, var(--ink) 16%, transparent); }
+/* Hero and Contact: poster halftone, fading out toward the text */
+.hero::before, .contact::before { position: absolute; z-index: 0; inset: 0; pointer-events: none; content: ""; background-image: radial-gradient(var(--tex-strong) 1.6px, transparent 1.9px); background-size: 12px 12px; }
+.hero::before { -webkit-mask-image: linear-gradient(to top, #000, transparent 60%); mask-image: linear-gradient(to top, #000, transparent 60%); }
+.contact { position: relative; }
+.contact::before { -webkit-mask-image: linear-gradient(to bottom, #000, transparent 60%); mask-image: linear-gradient(to bottom, #000, transparent 60%); }
+/* Skills: a cutting mat */
+:root #skills { background-image: linear-gradient(var(--tex) 1px, transparent 1px), linear-gradient(90deg, var(--tex) 1px, transparent 1px); background-size: 64px 64px; }
+/* Career: the hatching from the Effective lane */
+:root .career { background-image: repeating-linear-gradient(-45deg, color-mix(in srgb, var(--c-ink) 4%, transparent) 0 2px, transparent 2px 14px); }
+/* On AI: ruled notebook paper */
+:root #ai { background-image: repeating-linear-gradient(to bottom, transparent 0 39px, var(--tex) 39px 40px); }
+/* Work: a small print screen */
+:root .work { background-image: radial-gradient(var(--tex) 1px, transparent 1.3px); background-size: 8px 8px; }
+/* After hours: sound rings from the corner */
+:root .after { background-image: repeating-radial-gradient(circle at 100% 0, var(--tex) 0 1px, transparent 1px 28px); }
