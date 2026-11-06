@@ -112,12 +112,3 @@ addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimat
 addEventListener("resize", updateTimeline);
 updateTimeline();
 
-const blobs = [...document.querySelectorAll(".blob-wrap")];
-let tx = 0, ty = 0, cx = 0, cy = 0;
-addEventListener("pointermove", e => { tx = e.clientX / innerWidth - .5; ty = e.clientY / innerHeight - .5; });
-(function loop() {
-  cx += (tx - cx) * .06; cy += (ty - cy) * .06;
-  const s = motionOn() ? 1 : 0;
-  blobs.forEach(b => { const d = +b.dataset.depth * s; b.style.transform = `translate(${cx * d}px, ${cy * d + scrollY * d / 400}px)`; });
-  requestAnimationFrame(loop);
-})();
