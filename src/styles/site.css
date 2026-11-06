@@ -505,3 +505,10 @@ footer { display: flex; justify-content: space-between; margin-top: 110px; paddi
   .hero h1 { font-size: clamp(48px, 15.5vw, 112px); }
   :root .hero-sub { margin-inline: auto; }
 }
+
+/* Contact: centered, to bookend the hero */
+.contact .wrap { text-align: center; }
+.contact .wrap > p { max-width: 640px; margin: 48px auto 32px; text-wrap: balance; }
+:root .contact .ctas { align-items: center; }
+.socials { justify-content: center; }
+.contact footer { justify-content: center; }
