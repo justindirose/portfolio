@@ -18,7 +18,9 @@ toggle.addEventListener("click", () => setMode(root.dataset.mode === "dark" ? "l
 modePicks.forEach(b => b.addEventListener("click", () => setMode(b.dataset.modePick)));
 
 // Build the email link in the browser so the address isn't in the page source
-document.getElementById("email-link").href = ["mail", "to:", "hello", String.fromCharCode(64), "justindirose", ".", "com"].join("");
+const emailLink = document.getElementById("email-link");
+const unreverse = v => [...v].reverse().join("");
+emailLink.href = `mailto:${unreverse(emailLink.dataset.b)}${String.fromCharCode(64)}${unreverse(emailLink.dataset.a)}`;
 
 // Mobile menu
 const menu = document.getElementById("site-menu");
