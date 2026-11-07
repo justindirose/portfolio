@@ -100,10 +100,7 @@ a { color: inherit; }
 .marquee { position: relative; z-index: 3; margin: -10px -20px 0; transform: rotate(-1.5deg); }
 .track { display: flex; overflow: hidden; white-space: nowrap; }
 .track.a { background: var(--bold); color: var(--on-bold); }
-.track.b { background: var(--rail); color: var(--rail-ink); transform: rotate(2.4deg) translateY(-6px); }
-[data-mode="dark"] .track.b { background: var(--surface); color: var(--ink); }
 .track-inner { display: flex; flex: none; animation: ticker 75s linear infinite; will-change: transform; }
-.track.b .track-inner { animation-direction: reverse; animation-duration: 92s; }
 .track span { padding: 14px 18px; font: 800 26px/1 var(--font-kinetic); letter-spacing: -.03em; text-transform: uppercase; }
 .track span.dot { padding-inline: 0; color: inherit; opacity: .55; }
 @keyframes ticker { to { transform: translate3d(-50%, 0, 0); } }
@@ -232,10 +229,6 @@ footer { display: flex; justify-content: space-between; margin-top: 110px; paddi
 .strip .then { display: block; margin-top: 22px; color: var(--soft); font: 400 clamp(24px, 2.4vw, 34px)/1.2 var(--font-display); letter-spacing: -.02em; text-transform: none; }
 .strip .then .bx { color: var(--ink); }
 .bx-hand { --bx-fill: var(--evidence); --bx-ink: #101010; --bx-to: rotate(1.5deg); --bx-line: var(--bold); --bx-off: translate(-.08em, .1em) rotate(-2deg); }
-.stack { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 64px; padding-top: 28px; border-top: 1.5px solid var(--line-strong); }
-.stack h4 { margin: 0 0 4px; font: 800 15px var(--font-kinetic); letter-spacing: .02em; text-transform: uppercase; }
-.stack .how { margin: 0 0 14px; color: var(--soft); font: 400 14px/1.4 var(--font-display); font-style: italic; }
-.stack ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 14.5px; }
 
 /* Horizontal career timeline */
 .tl { position: relative; height: 600vh; }
@@ -293,7 +286,6 @@ footer { display: flex; justify-content: space-between; margin-top: 110px; paddi
   .lane-seg, .lane-seg.end { width: 100%; }
   .lane-seg.cont { display: none; }
   .chips span { opacity: .85; transform: none; }
-  .stack { grid-template-columns: 1fr 1fr; }
   .ah-grid { grid-template-columns: 1fr; gap: 32px; }
   .ah-list li { grid-template-columns: 1fr; gap: 8px; }
 }
@@ -340,7 +332,6 @@ footer { display: flex; justify-content: space-between; margin-top: 110px; paddi
 :root .proofs { gap: 12px; }
 :root .tags { gap: 8px; } :root .tags li { padding: 4px 12px; }
 :root .strip { margin-top: 112px; } :root .strip .then { margin-top: 24px; }
-:root .stack .how { margin-bottom: 16px; } :root .stack ul { gap: 8px; }
 :root .tl-sticky { gap: 32px; } :root .tl-hint { margin-top: 24px; }
 :root .era { padding-top: 32px; } :root .era h3 { margin: 16px 0 12px; }
 :root .chips { gap: 8px; } :root .chips span { padding: 4px 12px; }
@@ -352,7 +343,6 @@ footer { display: flex; justify-content: space-between; margin-top: 110px; paddi
 /* 5. Colour instead of italics */
 :root .pov-quote em, :root .proofs li.off { font-style: normal; }
 :root .proofs li.off { opacity: .65; }
-:root .stack .how { font-style: normal; }
 
 /* 6. Skill cards in two widths */
 :root .caps { grid-template-columns: repeat(12, 1fr); }
@@ -392,8 +382,6 @@ footer { display: flex; justify-content: space-between; margin-top: 110px; paddi
 }
 @media (max-width: 600px) {
   /* Shorter skills section: two proofs per card, no "Earlier" column */
-  .cap .proofs li:nth-child(n+3) { display: none; }
-  .stack > div:last-child { display: none; }
   :root .cap { padding-top: 24px; }
   :root .cap h3 { margin-top: 0; }
 }
@@ -456,7 +444,6 @@ footer { display: flex; justify-content: space-between; margin-top: 110px; paddi
 
 /* Labels: sentence case. Uppercase is kept for the big headlines */
 :root .nav-links a, :root .kicker, :root .cap .combo, :root .era-num, :root .era-span, :root .accent, :root .lane-seg, :root .tl-carry .lbl, :root .outcome small, :root .hero-meta, :root .moment figcaption, :root footer, :root .ah-list a.listen, :root .mode-toggle, :root .menu-theme-lbl { font-size: 14px; letter-spacing: 0; text-transform: none; }
-:root .stack h4, :root .ah-list h3 { letter-spacing: 0; text-transform: none; }
 :root .ah-list h3, :root .stack h4 { font-size: 18px; }
 :root .combo b { font-weight: inherit; }
 
@@ -477,7 +464,6 @@ footer { display: flex; justify-content: space-between; margin-top: 110px; paddi
   :root .cap .line { margin: 0 0 12px; }
   :root .cap .combo { margin: 0 0 16px; }
   :root .strip { margin-top: 96px; }
-  :root .stack { gap: 40px 32px; margin-top: 72px; padding-top: 32px; }
   :root .era h3 { margin: 16px 0 12px; }
   :root .era p { margin: 0 0 20px; }
   :root .accent { padding: 12px 16px; line-height: 1.4; }
@@ -520,14 +506,6 @@ footer { display: flex; justify-content: space-between; margin-top: 110px; paddi
 .hero::before { -webkit-mask-image: linear-gradient(to top, #000, transparent 60%); mask-image: linear-gradient(to top, #000, transparent 60%); }
 .contact { position: relative; }
 .contact::before { -webkit-mask-image: linear-gradient(to bottom, #000, transparent 60%); mask-image: linear-gradient(to bottom, #000, transparent 60%); }
-/* Skills: a cutting mat */
-:root #skills { background-image: linear-gradient(var(--tex) 1px, transparent 1px), linear-gradient(90deg, var(--tex) 1px, transparent 1px); background-size: 64px 64px; }
-/* Career: the hatching from the Effective lane */
-:root .career { background-image: repeating-linear-gradient(-45deg, color-mix(in srgb, var(--c-ink) 4%, transparent) 0 2px, transparent 2px 14px); }
-/* On AI: ruled notebook paper */
-:root #ai { background-image: repeating-linear-gradient(to bottom, transparent 0 39px, var(--tex) 39px 40px); }
-/* Work: a small print screen */
-:root .work { background-image: radial-gradient(var(--tex) 1px, transparent 1.3px); background-size: 8px 8px; }
 /* After hours: sound rings from the corner */
 :root .after { background-image: repeating-radial-gradient(circle at 100% 0, var(--tex) 0 1px, transparent 1px 28px); }
 
@@ -552,3 +530,9 @@ footer { display: flex; justify-content: space-between; margin-top: 110px; paddi
   :root .menu.open .menu-links a:hover, :root .menu.open .menu-links a:active, :root .menu.open .menu-links a:focus-visible { padding-left: 12px; }
   :root .menu-theme button { padding: 4px 16px; }
 }
+
+/* Simplified Skills: one proof per verb, stack as a single line */
+.cap .proof { margin: 0; color: var(--soft); font: 400 14px/1.5 var(--font-ui); }
+.cap:hover .proof { color: inherit; }
+.stack-line { max-width: 760px; margin: 64px 0 0; padding-top: 24px; border-top: 1.5px solid var(--line-strong); color: var(--soft); font: 400 18px/1.5 var(--font-display); }
+:root .ah-list h3 { letter-spacing: 0; text-transform: none; }
