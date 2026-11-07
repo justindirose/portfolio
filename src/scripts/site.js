@@ -17,6 +17,9 @@ syncMode();
 toggle.addEventListener("click", () => setMode(root.dataset.mode === "dark" ? "light" : "dark"));
 modePicks.forEach(b => b.addEventListener("click", () => setMode(b.dataset.modePick)));
 
+// Build the email link in the browser so the address isn't in the page source
+document.getElementById("email-link").href = ["mail", "to:", "hello", String.fromCharCode(64), "justindirose", ".", "com"].join("");
+
 // Mobile menu
 const menu = document.getElementById("site-menu");
 const menuBtn = document.getElementById("menu-btn");
