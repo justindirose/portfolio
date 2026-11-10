@@ -6,3 +6,10 @@
   for = "/_astro/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Site is offline for now: send everything to the Carrd page (temporary)
+[[redirects]]
+  from = "/*"
+  to = "https://justindirose.carrd.co/"
+  status = 302
+  force = true
